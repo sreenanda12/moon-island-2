@@ -47,6 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Initial check
 
+    // 3b. Staggered Card Reveal (Experience Cards)
+    const experienceCards = document.querySelectorAll('.experience-card');
+    if (experienceCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('card-revealed');
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        experienceCards.forEach(card => cardObserver.observe(card));
+    }
+
     // 4. Cinematic Starry Night Background System (3 Layers)
     const initParticles = () => {
         const isMobile = window.innerWidth < 768;
@@ -177,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroLeft) heroLeft.style.transform = `translate(${x * -12}px, ${y * -12}px)`;
         if (heroRight) heroRight.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
 
+
         // Mouse Glow update
         const mouseGlow = document.querySelector('.mouse-glow');
         if (mouseGlow) {
@@ -236,5 +252,179 @@ document.addEventListener('DOMContentLoaded', () => {
         // Execute immediately, and queue for complete load state
         forcePlay();
         heroVideo.addEventListener('canplay', forcePlay);
+    }
+
+    // 7. Mobile Flip on Tap (with auto-close other flipped cards)
+    const experiences = document.querySelectorAll('.experience-card');
+    experiences.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Ignore click if user clicked a link/button (e.g., Book Experience CTA)
+            if (e.target.closest('a') || e.target.closest('button')) {
+                return;
+            }
+            
+            // Toggle flipped state
+            card.classList.toggle('flipped');
+            
+            // Close other cards when one is opened
+            experiences.forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('flipped');
+                }
+            });
+        });
+    });
+
+    // 9. Premium Immersive Gallery Carousel and Background Enhancements
+    const galleryTrack = document.getElementById('gallery-track');
+    const galleryPrev = document.getElementById('gallery-prev');
+    const galleryNext = document.getElementById('gallery-next');
+    const galleryIndicators = document.getElementById('gallery-indicators');
+
+    if (galleryTrack) {
+        const cards = Array.from(galleryTrack.children);
+        const totalCards = cards.length;
+        let currentIndex = 0;
+        let visibleCards = 3;
+        let gap = 32; // 2rem in px
+
+        // Set layout variables
+        const updateLayoutVars = () => {
+            const width = window.innerWidth;
+            if (width <= 768) {
+                visibleCards = 1;
+                gap = 0;
+            } else if (width <= 1024) {
+                visibleCards = 2;
+                gap = 16; // 1rem in px
+            } else {
+                visibleCards = 3;
+                gap = 32;
+            }
+        };
+
+        // Render dot indicators
+        const renderIndicators = () => {
+            galleryIndicators.innerHTML = '';
+            // Only need indicator dots for active card ranges
+            const totalDots = totalCards - visibleCards + 1;
+            for (let i = 0; i < Math.max(1, totalDots); i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('moon-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                    resetAutoPlay();
+                });
+                galleryIndicators.appendChild(dot);
+            }
+        };
+
+        const updateTrackPosition = () => {
+            const cardWidth = cards[0].offsetWidth;
+            const offset = currentIndex * (cardWidth + gap);
+            galleryTrack.style.transform = `translate3d(-${offset}px, 0, 0)`;
+
+            // Update dot indicators
+            const dots = galleryIndicators.querySelectorAll('.moon-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        };
+
+        const goToSlide = (index) => {
+            const maxIndex = totalCards - visibleCards;
+            currentIndex = Math.min(Math.max(index, 0), maxIndex);
+            updateTrackPosition();
+        };
+
+        const slideNext = () => {
+            const maxIndex = totalCards - visibleCards;
+            if (currentIndex >= maxIndex) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            updateTrackPosition();
+        };
+
+        const slidePrev = () => {
+            if (currentIndex <= 0) {
+                currentIndex = totalCards - visibleCards;
+            } else {
+                currentIndex--;
+            }
+            updateTrackPosition();
+        };
+
+        // Event listeners for navigation
+        if (galleryPrev) galleryPrev.addEventListener('click', () => { slidePrev(); resetAutoPlay(); });
+        if (galleryNext) galleryNext.addEventListener('click', () => { slideNext(); resetAutoPlay(); });
+
+        // Auto-play settings
+        let autoPlayInterval = setInterval(slideNext, 4500);
+        
+        const resetAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(slideNext, 4500);
+        };
+
+        // Pause auto-play when hovering over the carousel track
+        galleryTrack.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+        galleryTrack.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(slideNext, 4500);
+        });
+
+        // Initialize carousel layout and track changes
+        updateLayoutVars();
+        renderIndicators();
+
+        window.addEventListener('resize', () => {
+            updateLayoutVars();
+            renderIndicators();
+            // ensure index bounds are safe after resize
+            const maxIndex = totalCards - visibleCards;
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            updateTrackPosition();
+        });
+
+        // Particle generator inside gallery background
+        const starsLayer = document.getElementById('gallery-stars');
+        if (starsLayer) {
+            const numParticles = 25;
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('floating-star-particle');
+                
+                // Random position & animation characteristics
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const tx = (Math.random() - 0.5) * 60;
+                const ty = -30 - Math.random() * 50;
+                const opacity = 0.2 + Math.random() * 0.5;
+                const duration = 8 + Math.random() * 12;
+                const delay = Math.random() * -15;
+
+                particle.style.cssText = `
+                    left: ${left}%; 
+                    top: ${top}%; 
+                    --tx: ${tx}px; 
+                    --ty: ${ty}px; 
+                    --op: ${opacity}; 
+                    --dur: ${duration}s;
+                    animation-delay: ${delay}s;
+                `;
+                
+                starsLayer.appendChild(particle);
+            }
+        }
     }
 });

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services & Packages | Moon Island - Experiences</title>
     <meta name="description" content="Explore our premium backwater activities, cultural experiences, and curated packages. Kayaking, Shikkara rides, and boutique stays in Kerala.">
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 
@@ -48,6 +48,24 @@
     </header>
 
     <main>
+        <!-- Premium Moon Background Effect -->
+        <div class="moon-container" id="moon-container">
+            <div class="moon-parallax" id="moon-parallax">
+                <div class="moon-mouse" id="moon-mouse">
+                    <div class="moon-float">
+                        <div class="moon-glow-container">
+                            <div class="moon-glow glow-1"></div>
+                            <div class="moon-glow glow-2"></div>
+                            <div class="moon-glow glow-3"></div>
+                            <div class="moon-glow glow-4"></div>
+                            <div class="moon-rays"></div>
+                            <img src="moon image.jpg" alt="Cinematic Moon" class="moon-img-element">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Page Header -->
         <section class="page-header" style="background-image: url('assets/kayak.png');">
             <div id="particles-js"></div>
@@ -67,66 +85,214 @@
                 
                 <div class="experience-grid">
                     <!-- Kayaking -->
-                    <div class="experience-card">
-                        <div class="experience-img-wrapper">
-                            <img src="assets/kayak.png" alt="Kayaking">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Kayaking Through Narrow Canals</h3>
-                            <p>Experience the untouched side of nature as you paddle through peaceful, narrow canals surrounded by lush greenery. Perfect for adventure lovers and nature enthusiasts.</p>
-                            <ul class="package-features" style="margin-top: 1rem;">
-                                <li>Calm and scenic routes</li>
-                                <li>Safe and guided experience</li>
-                                <li>Ideal for beginners and experts</li>
-                            </ul>
+                    <div class="experience-card" style="--i:0">
+                        <div class="experience-card-float">
+                            <div class="experience-card-inner">
+                                <!-- FRONT SIDE -->
+                                <div class="card-face card-front">
+                                    <div class="experience-img-wrapper">
+                                        <img src="assets/kayak.png" alt="Kayaking">
+                                    </div>
+                                    <div class="card-front-overlay">
+                                        <span class="category-badge">Adventure</span>
+                                        <h3 class="card-front-title">Kayaking</h3>
+                                    </div>
+                                    <div class="card-front-gradient"></div>
+                                </div>
+                                <!-- BACK SIDE -->
+                                <div class="card-face card-back">
+                                    <h3 class="card-back-title">Kayaking</h3>
+                                    <p class="card-back-description">Experience the untouched side of nature as you paddle through peaceful, narrow canals surrounded by lush greenery. Perfect for adventure lovers and nature enthusiasts.</p>
+                                    <ul class="card-back-highlights">
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Calm and scenic routes</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Safe and guided experience</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Ideal for beginners and experts</span>
+                                        </li>
+                                    </ul>
+                                    <div class="card-back-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Duration</span>
+                                            <span class="meta-val">2.5 Hours</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Best Time</span>
+                                            <span class="meta-val">Sunrise</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Level</span>
+                                            <span class="meta-val">Moderate</span>
+                                        </div>
+                                    </div>
+                                    <a href="contact.html" class="btn btn-luxury-cta">Book Experience</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Shikkara -->
-                    <div class="experience-card">
-                        <div class="experience-img-wrapper">
-                            <img src="assets/boat.png" alt="Shikkara Boating">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Shikkara Boating Ride</h3>
-                            <p>Relax and enjoy a traditional shikkara boat ride through the serene backwaters. Glide through beautiful waterways while witnessing local life and stunning landscapes.</p>
-                            <ul class="package-features" style="margin-top: 1rem;">
-                                <li>Comfortable seating</li>
-                                <li>Perfect for families and couples</li>
-                                <li>Sunrise and sunset rides</li>
-                            </ul>
+                    <div class="experience-card" style="--i:1">
+                        <div class="experience-card-float">
+                            <div class="experience-card-inner">
+                                <!-- FRONT SIDE -->
+                                <div class="card-face card-front">
+                                    <div class="experience-img-wrapper">
+                                        <img src="assets/boat.png" alt="Shikkara Boating">
+                                    </div>
+                                    <div class="card-front-overlay">
+                                        <span class="category-badge">Heritage</span>
+                                        <h3 class="card-front-title">Shikkara Boating</h3>
+                                    </div>
+                                    <div class="card-front-gradient"></div>
+                                </div>
+                                <!-- BACK SIDE -->
+                                <div class="card-face card-back">
+                                    <h3 class="card-back-title">Shikkara Boating</h3>
+                                    <p class="card-back-description">Relax and enjoy a traditional shikkara boat ride through the serene backwaters. Glide through beautiful waterways while witnessing local life and landscapes.</p>
+                                    <ul class="card-back-highlights">
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Comfortable seating</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Perfect for families and couples</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Sunrise and sunset rides</span>
+                                        </li>
+                                    </ul>
+                                    <div class="card-back-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Duration</span>
+                                            <span class="meta-val">1-2 Hours</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Best Time</span>
+                                            <span class="meta-val">Sunset</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Level</span>
+                                            <span class="meta-val">Easy</span>
+                                        </div>
+                                    </div>
+                                    <a href="contact.html" class="btn btn-luxury-cta">Book Experience</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Village Walk -->
-                    <div class="experience-card">
-                        <div class="experience-img-wrapper">
-                            <img src="assets/village.png" alt="Village Walk">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Village Walk Experience</h3>
-                            <p>Step into the heart of local life with our guided village walk. Explore traditional homes, meet friendly locals, and experience the culture and lifestyle of the village.</p>
-                            <ul class="package-features" style="margin-top: 1rem;">
-                                <li>Authentic cultural experience</li>
-                                <li>Local interactions</li>
-                                <li>Great for photography lovers</li>
-                            </ul>
+                    <div class="experience-card" style="--i:2">
+                        <div class="experience-card-float">
+                            <div class="experience-card-inner">
+                                <!-- FRONT SIDE -->
+                                <div class="card-face card-front">
+                                    <div class="experience-img-wrapper">
+                                        <img src="assets/village.png" alt="Village Walk">
+                                    </div>
+                                    <div class="card-front-overlay">
+                                        <span class="category-badge">Culture</span>
+                                        <h3 class="card-front-title">Village Walk</h3>
+                                    </div>
+                                    <div class="card-front-gradient"></div>
+                                </div>
+                                <!-- BACK SIDE -->
+                                <div class="card-face card-back">
+                                    <h3 class="card-back-title">Village Walk</h3>
+                                    <p class="card-back-description">Step into the heart of local life with our guided village walk. Explore traditional homes, meet friendly locals, and experience the culture.</p>
+                                    <ul class="card-back-highlights">
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Authentic cultural experience</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Local interactions</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Great for photography lovers</span>
+                                        </li>
+                                    </ul>
+                                    <div class="card-back-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Duration</span>
+                                            <span class="meta-val">1.5 Hours</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Best Time</span>
+                                            <span class="meta-val">Morning</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Level</span>
+                                            <span class="meta-val">Easy</span>
+                                        </div>
+                                    </div>
+                                    <a href="contact.html" class="btn btn-luxury-cta">Book Experience</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Homestay -->
-                    <div class="experience-card">
-                        <div class="experience-img-wrapper">
-                            <img src="assets/homestay.png" alt="Homestay">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Boutique Homestay</h3>
-                            <p>Stay with us and feel at home in the lap of nature. Our homestay offers a peaceful environment with traditional hospitality and modern comfort.</p>
-                            <ul class="package-features" style="margin-top: 1rem;">
-                                <li>Clean and comfortable rooms</li>
-                                <li>Authentic Kerala-style food</li>
-                                <li>Friendly host and service</li>
-                            </ul>
+                    <div class="experience-card" style="--i:3">
+                        <div class="experience-card-float">
+                            <div class="experience-card-inner">
+                                <!-- FRONT SIDE -->
+                                <div class="card-face card-front">
+                                    <div class="experience-img-wrapper">
+                                        <img src="assets/homestay.png" alt="Homestay">
+                                    </div>
+                                    <div class="card-front-overlay">
+                                        <span class="category-badge">Boutique Stay</span>
+                                        <h3 class="card-front-title">Boutique Homestay</h3>
+                                    </div>
+                                    <div class="card-front-gradient"></div>
+                                </div>
+                                <!-- BACK SIDE -->
+                                <div class="card-face card-back">
+                                    <h3 class="card-back-title">Boutique Homestay</h3>
+                                    <p class="card-back-description">Stay with us and feel at home in the lap of nature. Our homestay offers a peaceful environment with traditional hospitality and comfort.</p>
+                                    <ul class="card-back-highlights">
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Clean and comfortable rooms</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Authentic Kerala-style food</span>
+                                        </li>
+                                        <li>
+                                            <span class="highlight-icon">✓</span>
+                                            <span class="highlight-text">Friendly host and service</span>
+                                        </li>
+                                    </ul>
+                                    <div class="card-back-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Duration</span>
+                                            <span class="meta-val">Overnight</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Best Time</span>
+                                            <span class="meta-val">Oct - May</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Level</span>
+                                            <span class="meta-val">Leisure</span>
+                                        </div>
+                                    </div>
+                                    <a href="contact.html" class="btn btn-luxury-cta">Book Experience</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,6 +434,220 @@
             </div>
         </section>
 
+        <!-- Immersive Moon Island Gallery -->
+        <section class="gallery-section reveal">
+            <!-- Background Enhancements (Constellations, fog, overlay) -->
+            <div class="gallery-bg-enhancements">
+                <div class="gallery-stars-layer" id="gallery-stars"></div>
+                <div class="gallery-fog-layer"></div>
+                <div class="gallery-moon-reflection"></div>
+                <svg class="constellation-svg" id="constellation-svg" width="100%" height="100%" viewBox="0 0 1200 400" preserveAspectRatio="none">
+                    <line x1="100" y1="100" x2="300" y2="200" stroke="rgba(165, 210, 255, 0.15)" stroke-width="1.5" />
+                    <line x1="300" y1="200" x2="500" y2="150" stroke="rgba(165, 210, 255, 0.15)" stroke-width="1.5" />
+                    <line x1="500" y1="150" x2="700" y2="300" stroke="rgba(165, 210, 255, 0.15)" stroke-width="1.5" />
+                    <line x1="700" y1="300" x2="900" y2="180" stroke="rgba(165, 210, 255, 0.15)" stroke-width="1.5" />
+                    <line x1="900" y1="180" x2="1100" y2="250" stroke="rgba(165, 210, 255, 0.15)" stroke-width="1.5" />
+                    <circle cx="100" cy="100" r="4" fill="rgba(165, 210, 255, 0.4)" class="const-star" />
+                    <circle cx="300" cy="200" r="5" fill="rgba(223, 168, 87, 0.5)" class="const-star" />
+                    <circle cx="500" cy="150" r="4" fill="rgba(165, 210, 255, 0.4)" class="const-star" />
+                    <circle cx="700" cy="300" r="6" fill="rgba(255, 255, 255, 0.6)" class="const-star" />
+                    <circle cx="900" cy="180" r="4" fill="rgba(223, 168, 87, 0.5)" class="const-star" />
+                    <circle cx="1100" cy="250" r="5" fill="rgba(165, 210, 255, 0.4)" class="const-star" />
+                </svg>
+            </div>
+
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Island Moments</span>
+                    <h2 class="section-title gold-gradient-text" style="font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: 1px;">Explore Moon Island Moments</h2>
+                    <p class="section-subtitle">Discover breathtaking island landscapes, hidden gems, moonlit adventures, and unforgettable travel experiences.</p>
+                </div>
+
+                <!-- Carousel Wrapper -->
+                <div class="gallery-carousel-wrapper">
+                    <!-- Nav Arrows -->
+                    <button class="nav-arrow prev-arrow" id="gallery-prev" aria-label="Previous image">
+                        <span class="arrow-icon">&#8592;</span>
+                    </button>
+                    <button class="nav-arrow next-arrow" id="gallery-next" aria-label="Next image">
+                        <span class="arrow-icon">&#8594;</span>
+                    </button>
+
+                    <!-- Carousel Track -->
+                    <div class="gallery-carousel-track-container">
+                        <div class="gallery-carousel-track" id="gallery-track">
+                            <!-- Card 1 -->
+                            <div class="gallery-card" style="--i: 0;">
+                                <div class="gallery-card-inner">
+                                    <img src="p1.JPG" alt="Moon Island Vista" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Moon Island Vista</h4>
+                                        <p>Serene backwaters under the sky</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="gallery-card" style="--i: 1;">
+                                <div class="gallery-card-inner">
+                                    <img src="p2.JPG" alt="Shikkara Cruise" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Shikkara Cruise</h4>
+                                        <p>Traditional heritage cruise</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="gallery-card" style="--i: 2;">
+                                <div class="gallery-card-inner">
+                                    <img src="p3.JPG" alt="Golden Sunrise" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Golden Sunrise</h4>
+                                        <p>Beautiful dawn over backwaters</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="gallery-card" style="--i: 3;">
+                                <div class="gallery-card-inner">
+                                    <img src="p4.JPG" alt="Local Culture" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Local Culture</h4>
+                                        <p>Village traditions & lifestyle</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="gallery-card" style="--i: 4;">
+                                <div class="gallery-card-inner">
+                                    <img src="p5.JPG" alt="Kayaking Adventure" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Kayaking Route</h4>
+                                        <p>Narrow canals exploration</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="gallery-card" style="--i: 5;">
+                                <div class="gallery-card-inner">
+                                    <img src="p6.JPG" alt="Homestay Haven" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Homestay Haven</h4>
+                                        <p>Premium lakeside stay comfort</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 7 -->
+                            <div class="gallery-card" style="--i: 6;">
+                                <div class="gallery-card-inner">
+                                    <img src="p7.JPG" alt="Quiet Canals" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Quiet Canals</h4>
+                                        <p>Peaceful routes through nature</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 8 -->
+                            <div class="gallery-card" style="--i: 7;">
+                                <div class="gallery-card-inner">
+                                    <img src="p8.JPG" alt="Heritage Activities" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Heritage Activities</h4>
+                                        <p>Living backwater traditions</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 9 -->
+                            <div class="gallery-card" style="--i: 8;">
+                                <div class="gallery-card-inner">
+                                    <img src="p9.JPG" alt="Sunrise Paddle" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Sunrise Paddle</h4>
+                                        <p>Morning calm on the lake</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 10 -->
+                            <div class="gallery-card" style="--i: 9;">
+                                <div class="gallery-card-inner">
+                                    <img src="p10.JPG" alt="Tropical Paradise" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Tropical Paradise</h4>
+                                        <p>Surrounded by dense coconut palms</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 11 -->
+                            <div class="gallery-card" style="--i: 10;">
+                                <div class="gallery-card-inner">
+                                    <img src="p11.JPG" alt="Sunset Magic" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Sunset Magic</h4>
+                                        <p>Romantic cruise at twilight</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 12 -->
+                            <div class="gallery-card" style="--i: 11;">
+                                <div class="gallery-card-inner">
+                                    <img src="p13.JPG" alt="Mirror Lake" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Mirror Lake</h4>
+                                        <p>Perfect symmetry of sky and water</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 13 -->
+                            <div class="gallery-card" style="--i: 12;">
+                                <div class="gallery-card-inner">
+                                    <img src="p14.JPG" alt="Traditional Canoes" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Traditional Canoes</h4>
+                                        <p>Locally crafted standard boats</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                            <!-- Card 14 -->
+                            <div class="gallery-card" style="--i: 13;">
+                                <div class="gallery-card-inner">
+                                    <img src="p15.JPG" alt="Backwater Retreat" class="gallery-img">
+                                    <div class="gallery-card-overlay">
+                                        <h4>Backwater Retreat</h4>
+                                        <p>Luxurious nature stay gateway</p>
+                                    </div>
+                                    <div class="shimmer-effect"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Glowing Moon Indicators -->
+                    <div class="gallery-indicators" id="gallery-indicators">
+                        <!-- Dots generated dynamically via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="gallery-cta text-center mt-12" style="margin-top: 3.5rem;">
+                    <a href="contact.html" class="btn btn-luxury-pill">
+                        <span class="btn-icon">🌕</span> Explore Custom Adventure
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Final CTA -->
         <section class="final-cta reveal">
             <div class="container text-center">
@@ -286,7 +666,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 
 </html>
