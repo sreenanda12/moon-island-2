@@ -359,6 +359,7 @@ img {
     height: 100%;
     z-index: 1;
     overflow: hidden;
+    background: radial-gradient(ellipse at 60% 40%, #0a1628 0%, #020617 100%);
 }
 
 .video-bg {
