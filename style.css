@@ -1634,6 +1634,7 @@ footer {
 }
 
 .moon-container {
+    display: none !important;
     position: fixed;
     top: 25vh; /* Visually balanced vertical position, stays fully visible */
     right: 6%; /* Positioned on the right side */
