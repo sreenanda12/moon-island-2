@@ -25,11 +25,12 @@
 }
 
 /* Reset & Base */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -102,6 +103,7 @@ img {
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
+    contain: layout style paint;
 }
 
 .particle-layer {
@@ -111,7 +113,8 @@ img {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    transition: transform 0.25s ease-out;
 }
 
 .mist-overlay {
@@ -123,15 +126,11 @@ img {
     background: radial-gradient(ellipse at 50% 50%, rgba(165, 210, 255, 0.03), transparent 75%);
     z-index: 1;
     pointer-events: none;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: mistFlow 40s ease-in-out infinite alternate;
+    filter: blur(30px);
+    opacity: 0.45;
+    /* Removed heavy continuous animation — static for performance */
 }
 
-@keyframes mistFlow {
-    from { transform: translate(-2%, 2%) scale(1); }
-    to { transform: translate(2%, -2%) scale(1.1); }
-}
 
 /* Water Reflection & Shimmer */
 .water-reflection {
@@ -149,23 +148,18 @@ img {
 .water-shimmer {
     position: absolute;
     top: 0;
-    left: -50%;
-    width: 200%;
+    left: 0;
+    width: 100%;
     height: 100%;
     background: repeating-linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.02) 12%,
-        transparent 24%
+        rgba(255, 255, 255, 0.015) 14%,
+        transparent 28%
     );
-    filter: blur(20px);
-    animation: shimmerMove 18s ease-in-out infinite alternate;
-    opacity: 0.4;
-}
-
-@keyframes shimmerMove {
-    0% { transform: translateX(0) skewX(-12deg); }
-    100% { transform: translateX(8%) skewX(12deg); }
+    /* Removed blur and skew — GPU-friendly opacity-only static shimmer */
+    opacity: 0.3;
+    will-change: opacity;
 }
 
 .water-ripples {
@@ -175,12 +169,13 @@ img {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at 50% 100%, rgba(165, 210, 255, 0.04), transparent 80%);
-    animation: rippleWave 8s ease-in-out infinite alternate;
+    animation: rippleWave 10s ease-in-out infinite alternate;
+    will-change: opacity;
 }
 
 @keyframes rippleWave {
-    0% { opacity: 0.4; transform: scaleY(0.9); }
-    100% { opacity: 0.7; transform: scaleY(1.1); }
+    0% { opacity: 0.3; transform: translate3d(0, 0, 0); }
+    100% { opacity: 0.6; transform: translate3d(0, 0, 0); }
 }
 
 .mouse-glow {
@@ -370,13 +365,9 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: slowZoomBg 32s ease infinite alternate;
+    /* Removed continuous zoom animation — saves GPU on mobile/mid-range devices */
     will-change: transform;
-}
-
-@keyframes slowZoomBg {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.08); }
+    transform: translate3d(0, 0, 0);
 }
 
 .hero-overlay-premium {
@@ -779,14 +770,14 @@ section {
     -webkit-backface-visibility: hidden;
     border-radius: 24px;
     overflow: hidden;
-    background: rgba(4, 9, 24, 0.55);
+    background: rgba(4, 9, 24, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.35),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 /* Premium glow and shadow on hover */
@@ -1359,18 +1350,15 @@ footer {
 
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    filter: blur(4px);
+    transform: translate3d(0, 30px, 0);
     transition:
-        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+    transform: translate3d(0, 0, 0);
 }
 
 /* Responsive Design (Media Queries) */
@@ -1559,6 +1547,7 @@ footer {
     /* Mobile Performance Optimizations */
     .video-bg {
         animation: none;
+        transform: none;
     }
     .hero-fog-layer::after {
         animation: none;
@@ -1569,6 +1558,18 @@ footer {
     }
     .mouse-glow {
         display: none !important;
+    }
+    .mist-overlay {
+        display: none;
+    }
+    .water-shimmer,
+    .water-ripples {
+        display: none;
+    }
+    /* Reduce backdrop-filter cost on mobile */
+    .card-face {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
 
     .form-glass {
@@ -1888,22 +1889,13 @@ section h1, section h2, section h3, section h4, section p, section span, section
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.4;
-    animation: slowRotateConstellation 180s linear infinite;
-}
-
-@keyframes slowRotateConstellation {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    opacity: 0.35;
+    /* Removed rotation animation — stars still visible with much less GPU cost */
 }
 
 .const-star {
-    animation: starPulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes starPulse {
-    0% { opacity: 0.3; r: 3px; }
-    100% { opacity: 0.9; r: 6px; }
+    /* Static — removed per-star pulsing animation to save CPU */
+    opacity: 0.6;
 }
 
 .gold-gradient-text {
@@ -1979,19 +1971,20 @@ section h1, section h2, section h3, section h4, section p, section span, section
 .shimmer-effect {
     position: absolute;
     top: 0;
-    left: -150%;
-    width: 100%;
+    left: -100%;
+    width: 60%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    animation: sweepShimmer 12s infinite ease-in-out;
-    animation-delay: calc(0.8s * var(--i));
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    animation: sweepShimmer 14s infinite ease-in-out;
+    animation-delay: calc(1.2s * var(--i, 0));
     pointer-events: none;
+    will-change: transform;
 }
 
 @keyframes sweepShimmer {
-    0% { left: -150%; }
-    30% { left: 150%; }
-    100% { left: 150%; }
+    0%   { transform: translate3d(-100%, 0, 0); }
+    35%  { transform: translate3d(300%, 0, 0); }
+    100% { transform: translate3d(300%, 0, 0); }
 }
 
 .gallery-card-overlay {
@@ -2139,12 +2132,7 @@ section h1, section h2, section h3, section h4, section p, section span, section
 
 .btn-icon {
     font-size: 1.1rem;
-    animation: moonSpin 8s infinite linear;
-}
-
-@keyframes moonSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    /* Removed continuous spin — keeps hover smooth with no persistent cost */
 }
 
 /* Particle system styles */
@@ -2188,5 +2176,20 @@ section h1, section h2, section h3, section h4, section p, section span, section
     }
     .gallery-section {
         padding: 6rem 0;
+    }
+    .constellation-svg {
+        display: none;
+    }
+    .gallery-moon-reflection {
+        display: none;
+    }
+}
+
+/* ===== Global Reduced-Motion Override ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

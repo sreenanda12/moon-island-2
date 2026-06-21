@@ -11,10 +11,15 @@
     <!-- SEO & Favicon -->
     <link rel="canonical" href="index.html" />
 
+    <!-- Critical Resource Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="moon_island_logoh.png-removebg-preview.png">
+
     <!-- Typography -->
-    <link rel="stylesheet" href="style.css?v=5.0">
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="style.css?v=6.0">
+    <!-- Particles.js (deferred so it doesn't block render) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
 </head>
 
 <body>
@@ -59,7 +64,7 @@
         <section class="hero-premium hero-section">
             <div id="particles-js"></div>
             <div class="hero-video-bg">
-                <video class="hero-bg-video video-bg" autoplay muted loop playsinline>
+                <video class="hero-bg-video video-bg" autoplay muted loop playsinline preload="auto" poster="moon image.jpg">
                     <source src="hero.mp4" type="video/mp4">
                 </video>
             </div>
@@ -124,7 +129,7 @@
             <div class="container">
                 <div class="split-section">
                     <div class="split-img">
-                        <img src="p9.JPG" alt="Moon Island Experiences">
+                        <img src="p9.JPG" alt="Moon Island Experiences" loading="lazy" decoding="async">
                     </div>
                     <div class="split-content">
                         <span class="section-tag">Since 2021</span>
@@ -156,7 +161,7 @@
                                 <!-- FRONT SIDE -->
                                 <div class="card-face card-front">
                                     <div class="experience-img-wrapper">
-                                        <img src="assets/kayak.png" alt="Kayaking">
+                                        <img src="assets/kayak.png" alt="Kayaking" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-front-overlay">
                                         <span class="category-badge">Adventure</span>
@@ -209,7 +214,7 @@
                                 <!-- FRONT SIDE -->
                                 <div class="card-face card-front">
                                     <div class="experience-img-wrapper">
-                                        <img src="assets/boat.png" alt="Shikkara Boating">
+                                        <img src="assets/boat.png" alt="Shikkara Boating" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-front-overlay">
                                         <span class="category-badge">Heritage</span>
@@ -262,7 +267,7 @@
                                 <!-- FRONT SIDE -->
                                 <div class="card-face card-front">
                                     <div class="experience-img-wrapper">
-                                        <img src="assets/village.png" alt="Village Walk">
+                                        <img src="assets/village.png" alt="Village Walk" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-front-overlay">
                                         <span class="category-badge">Culture</span>
@@ -315,7 +320,7 @@
                                 <!-- FRONT SIDE -->
                                 <div class="card-face card-front">
                                     <div class="experience-img-wrapper">
-                                        <img src="assets/homestay.png" alt="Boutique Homestay">
+                                        <img src="assets/homestay.png" alt="Boutique Homestay" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-front-overlay">
                                         <span class="category-badge">Boutique Stay</span>
@@ -402,7 +407,7 @@
             <div class="container">
                 <div class="split-section" style="flex-direction: row-reverse;">
                     <div class="split-img">
-                        <img src="p4.JPG" alt="Cultural Activities">
+                        <img src="p4.JPG" alt="Cultural Activities" loading="lazy" decoding="async">
                     </div>
                     <div class="split-content">
                         <span class="section-tag">Heritage & Tradition</span>
